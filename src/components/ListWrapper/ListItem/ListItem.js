@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from "./ListItem.module.scss";
+import styles from './ListItem.module.scss';
+import Title from '../../Title/Title';
+import Button from '../../Button/Button';
 
 const ListItem = ({ image, name, description, twitterLink }) => {
 
@@ -9,19 +11,13 @@ const ListItem = ({ image, name, description, twitterLink }) => {
     <li className={styles.wrapper}>
       <ImageTag
         src={image}
-        className={styles.image}
+        className={image ? styles.image : styles.imageNone}
         alt={name}
       />
       <div>
-        <h2 className={styles.name}>{name}</h2>
+        <Title>{name}</Title>
         <p className={styles.description}>{description}</p>
-        <a
-          href={twitterLink}
-          target='_blank'
-          rel='noopener noreferrer'
-          className={styles.button}>
-          visit twitter page
-        </a>
+        <Button href={twitterLink}>visit twitter page</Button>
       </div>
     </li>
   )

@@ -26,23 +26,14 @@
     border-radius: 50%;
 }
 
-.name {
-    margin: 0;
-    color: #1E58FF;
-    font-weight: 700;
+.imageNone {
+    @extend .image;
+    background: url('https://unsplash.it/200/200?grayscale') /* random pics */
+    no-repeat;
+    background-size: cover;
 }
 
 .description {
     margin: 10px 0 20px;
     font-weight: 300;
-}
-
-.button {
-    font-size: 10px;
-    text-decoration: none;
-    padding: 7px 12px;
-    font-weight: 500;
-    background: none;
-    border: 2px solid #1E58FF;
-    color: #1E58FF;
 }
