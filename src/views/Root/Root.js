@@ -1,13 +1,16 @@
 import React from "react";
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import "./index.css";
+
 import danAbramovImage from '../../assets/images/danabramov.jpg';
 import ryanFlorenceImage from '../../assets/images/ryanflorence.jpg';
 import michaelJacksonImage from '../../assets/images/michaeljackson.jpg';
 import kentCDoddsImage from '../../assets/images/kentcdodds.jpg';
+
 import ArticlesView from '../ArticlesView/ArticlesView';
 import NotesView from '../NotesView/NotesView';
 import TwittersView from '../TwittersView/TwittersView';
+import Navigation from '../../components/Navigation/Navigation';
 
 const initialStateItems = [
   {
@@ -62,10 +65,14 @@ class Root extends React.Component {
     return (
       <BrowserRouter>
         <>
+          <Navigation />
           <h1>Hello World</h1>
-          <Route exact path="/" component={ TwittersView }/>
-          <Route path="/articles" component={ ArticlesView } />
-          <Route path="/notes" component={ NotesView } />
+          <Switch>
+            <Route exact path="/" component={ TwittersView }/>
+            <Route path="/articles" component={ ArticlesView } />
+            <Route path="/notes" component={NotesView} />
+            <Route path="/notes/:id" component={NotesView} />
+          </Switch>
         </>
       </BrowserRouter>
     );
