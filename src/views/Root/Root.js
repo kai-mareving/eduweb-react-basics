@@ -11,6 +11,7 @@ import ArticlesView from '../ArticlesView/ArticlesView';
 import NotesView from '../NotesView/NotesView';
 import TwittersView from '../TwittersView/TwittersView';
 import Header from '../../components/Header/Header';
+import Modal from '../../components/Modal/Modal';
 
 const initialStateItems = [
   {
@@ -73,6 +74,7 @@ class Root extends React.Component {
             <Route path="/notes" component={NotesView} />
             <Route path="/notes/:id" component={NotesView} />
           </Switch>
+          <Modal />
         </>
       </BrowserRouter>
     );
