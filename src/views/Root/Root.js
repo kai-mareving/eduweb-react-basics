@@ -10,7 +10,7 @@ import kentCDoddsImage from '../../assets/images/kentcdodds.jpg';
 import ArticlesView from '../ArticlesView/ArticlesView';
 import NotesView from '../NotesView/NotesView';
 import TwittersView from '../TwittersView/TwittersView';
-import Navigation from '../../components/Navigation/Navigation';
+import Header from '../../components/Header/Header';
 
 const initialStateItems = [
   {
@@ -65,7 +65,7 @@ class Root extends React.Component {
     return (
       <BrowserRouter>
         <>
-          <Navigation />
+          <Header />
           <h1>Hello World</h1>
           <Switch>
             <Route exact path="/" component={ TwittersView }/>
