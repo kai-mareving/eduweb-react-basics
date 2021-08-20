@@ -1,6 +1,7 @@
-import React from "react";
-import ListItem from "./ListItem";
-import styles from "./List.module.scss";
+import React from 'react';
+import PropTypes from 'prop-types';
+import ListItem from './ListItem';
+import styles from './List.module.scss';
 
 const List = props => (
   <ul className={styles.wrapper}>
@@ -10,5 +11,9 @@ const List = props => (
     ))}
   </ul>
 );
+
+List.propTypes = {
+  items: PropTypes.node,
+};
 
 export default List;
