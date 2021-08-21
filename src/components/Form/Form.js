@@ -30,6 +30,8 @@ class Form extends React.Component {
   };
 
   render() {
+    const { activeOption } = this.state;
+
     return (
       <div className={styles.wrapper}>
         <Title>Add new { descriptions[this.state.activeOption] }</Title>
@@ -46,23 +48,32 @@ class Form extends React.Component {
             </Radio>
             <Radio
               id={types.article}
-              checked={this.state.activeOption === types.article}
+              checked={activeOption === types.article}
               changeFn={() => this.handleFormType(types.article)}
             >
               Article
             </Radio>
             <Radio
               id={types.note}
-              checked={this.state.activeOption === types.note}
+              checked={activeOption === types.note}
               changeFn={() => this.handleFormType(types.note)}
             >
               Note
             </Radio>
           </div>
 
-          <Input name='name' label='Name' maxLength={30} />
-          <Input name='link' label='Link' />
-          <Input name='image' label='Image' />
+          <Input name='name'
+            label={activeOption === types.twitter ? 'Twitter Name' : 'Title'}
+            maxLength={30}
+          />
+          {activeOption !== types.note ?
+            (<Input name='link'
+              label={activeOption === types.twitter ? 'Twitter Link' : 'Link'}
+            />)
+            : null}
+          {activeOption === types.twitter ?
+            (<Input name='image' label='Image' />)
+            : null}
           <Input tag='textarea' name='description' label='Description' />
           <Button>add new item</Button>
 

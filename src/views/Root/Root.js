@@ -89,7 +89,8 @@ class Root extends React.Component {
             <Route path="/notes" component={NotesView} />
             <Route path="/notes/:id" component={NotesView} />
           </Switch>
-          {isModalOpen && <Modal closeModalFn={this.closeModal}/> }
+          {isModalOpen && <Modal closeModalFn={this.closeModal} />}
+          {/* {isModalOpen ? <Modal closeModalFn={this.closeModal}/> : null } */}
         </>
       </BrowserRouter>
     );
