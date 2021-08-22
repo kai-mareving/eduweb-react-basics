@@ -1,4 +1,5 @@
 import React from 'react';
+import AppContext from '../../context';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './index.css';
 
@@ -44,6 +45,7 @@ class Root extends React.Component {
   state = {
     items: [...initialStateItems],
     isModalOpen: false,
+    name: 'Jo Kai Mareving',
   };
 
   addItem = e => {
@@ -80,7 +82,7 @@ class Root extends React.Component {
 
     return (
       <BrowserRouter>
-        <>
+        <AppContext.Provider value={this.state.name}>
           <Header openModalFn={this.openModal} />
           <h1>Hello World</h1>
           <Switch>
@@ -91,7 +93,7 @@ class Root extends React.Component {
           </Switch>
           {isModalOpen && <Modal closeModalFn={this.closeModal} />}
           {/* {isModalOpen ? <Modal closeModalFn={this.closeModal}/> : null } */}
-        </>
+        </AppContext.Provider>
       </BrowserRouter>
     );
   }
