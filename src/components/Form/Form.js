@@ -30,7 +30,7 @@ class Form extends React.Component {
 
   handleFormType = (type) => {
     this.setState({
-    type: type,
+      type: type,
     });
   };
 
