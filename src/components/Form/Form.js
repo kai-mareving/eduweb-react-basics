@@ -1,4 +1,5 @@
 import React from 'react';
+import AppContext from '../../context';
 import styles from './Form.module.scss';
 import PropTypes from 'prop-types';
 import Input from '../Input/Input';
@@ -33,52 +34,56 @@ class Form extends React.Component {
     const { activeOption } = this.state;
 
     return (
-      <div className={styles.wrapper}>
-        <Title>Add new { descriptions[this.state.activeOption] }</Title>
-        <form autoComplete='off' className={styles.form} onSubmit={ this.props.submitFn }>
-          {/* ad. autocomplete -> browsers (except chrome) require hidden input with autocomplete off */}
+      <AppContext.Consumer>
+        {(context) => (
+          <div className={styles.wrapper}>
+          <Title>Add new {descriptions[this.state.activeOption]}</Title>
+          <form autoComplete='off' className={styles.form} onSubmit={context.addItem}>
+            {/* ad. autocomplete -> browsers (except chrome) require hidden input with autocomplete off */}
 
-          <div className={styles.formOptions}>
-            <Radio
-              id={types.twitter}
-              checked={this.state.activeOption === types.twitter}
-              changeFn={() => this.handleFormType(types.twitter)}
-            >
-              Twitter
+            <div className={styles.formOptions}>
+              <Radio
+                id={types.twitter}
+                checked={this.state.activeOption === types.twitter}
+                changeFn={() => this.handleFormType(types.twitter)}
+              >
+                Twitter
             </Radio>
-            <Radio
-              id={types.article}
-              checked={activeOption === types.article}
-              changeFn={() => this.handleFormType(types.article)}
-            >
-              Article
+              <Radio
+                id={types.article}
+                checked={activeOption === types.article}
+                changeFn={() => this.handleFormType(types.article)}
+              >
+                Article
             </Radio>
-            <Radio
-              id={types.note}
-              checked={activeOption === types.note}
-              changeFn={() => this.handleFormType(types.note)}
-            >
-              Note
+              <Radio
+                id={types.note}
+                checked={activeOption === types.note}
+                changeFn={() => this.handleFormType(types.note)}
+              >
+                Note
             </Radio>
-          </div>
+            </div>
 
-          <Input name='name'
-            label={activeOption === types.twitter ? 'Twitter Name' : 'Title'}
-            maxLength={30}
-          />
-          {activeOption !== types.note ?
-            (<Input name='link'
-              label={activeOption === types.twitter ? 'Twitter Link' : 'Link'}
-            />)
-            : null}
-          {activeOption === types.twitter ?
-            (<Input name='image' label='Image' />)
-            : null}
-          <Input tag='textarea' name='description' label='Description' />
-          <Button>add new item</Button>
+            <Input name='name'
+              label={activeOption === types.twitter ? 'Twitter Name' : 'Title'}
+              maxLength={30}
+            />
+            {activeOption !== types.note ?
+              (<Input name='link'
+                label={activeOption === types.twitter ? 'Twitter Link' : 'Link'}
+              />)
+              : null}
+            {activeOption === types.twitter ?
+              (<Input name='image' label='Image' />)
+              : null}
+            <Input tag='textarea' name='description' label='Description' />
+            <Button>add new item</Button>
 
-        </form>
-      </div>
+          </form>
+        </div>
+        )}
+      </AppContext.Consumer>
     );
   }
 }
