@@ -14,7 +14,7 @@ class Root extends React.Component {
     article: [],
     note: [],
     isModalOpen: false,
-    name: 'Jo Kai Mareving',
+    // name: 'Jo Kai Mareving',
   };
 
   addItem = (e, newItem)=> {

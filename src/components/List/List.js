@@ -13,7 +13,7 @@ const List = ({items}) => (
         ))}
       </ul>
     ) : (
-        <h1 className={styles.noItems}>There's nothing here yet. Please add some items!?</h1>
+      <h1 className={styles.noItems}>There is nothing here yet. Please add an item!</h1>
     )}
   </>
 );
